@@ -6,7 +6,7 @@
 /*   By: sfreijo- <sfreijo-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 21:14:45 by sfreijo-          #+#    #+#             */
-/*   Updated: 2022/05/28 14:04:25 by sfreijo-         ###   ########.fr       */
+/*   Updated: 2022/05/28 15:47:50 by sfreijo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,5 +93,11 @@ void			ft_putendl_fd(char *s, int fd);
 void			ft_putnbr_fd(int n, int fd);
 
 t_list			*ft_lstnew(void *content);
+
+void			ft_lstadd_front(t_list **lst, t_list *new);
+
+int				ft_lstsize(t_list *lst);
+
+t_list			*ft_lstlast(t_list *lst);
 
 #endif

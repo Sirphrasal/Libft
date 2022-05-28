@@ -6,7 +6,7 @@
 /*   By: sfreijo- <sfreijo-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 22:09:22 by sfreijo-          #+#    #+#             */
-/*   Updated: 2022/05/05 20:06:33 by sfreijo-         ###   ########.fr       */
+/*   Updated: 2022/05/25 19:41:18 by sfreijo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,15 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	char	*str;
-
-	str = (char *)s;
-	while (*str)
+	while (*s)
 	{
-		if (*str == c)
-			return (str);
-		str++;
+		if (*s == (char)c)
+			return ((char *)s);
+		s++;
 	}
-	if (*str != c)
+	if (*s != (char)c)
 		return (0);
-	return (str);
+	return ((char *)s);
 }
 /* int	main(void)
 {

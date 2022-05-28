@@ -6,23 +6,13 @@
 /*   By: sfreijo- <sfreijo-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 21:12:55 by sfreijo-          #+#    #+#             */
-/*   Updated: 2022/04/21 21:44:47 by sfreijo-         ###   ########.fr       */
+/*   Updated: 2022/05/27 21:40:31 by sfreijo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <stdlib.h>
-
-size_t	ft_strlen(const char *s)
-{
-	size_t	i;
-
-	i = 0;
-	while (((char *)s)[i])
-		i++;
-	return (i);
-}
-//Devuelve el length del src y copia dstsize caracteres en *dst
+#include "libft.h"
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {

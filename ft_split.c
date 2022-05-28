@@ -6,58 +6,61 @@
 /*   By: sfreijo- <sfreijo-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 22:14:57 by sfreijo-          #+#    #+#             */
-/*   Updated: 2022/05/17 18:48:01 by sfreijo-         ###   ########.fr       */
+/*   Updated: 2022/05/25 20:13:50 by sfreijo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include "libft.h"
 
-size_t	num_substrings(char const *s, char c)
+size_t	cnt_words(char const *str, char delimiter)
 {
 	size_t	words;
-	char	flag;
+	char	is_delimiter;
 
 	words = 0;
-	flag = 1;
-	while (*s)
+	is_delimiter = 1;
+	while (*str)
 	{
-		if (*s++ == c)
-			flag = 1;
+		if (*str++ == delimiter)
+			is_delimiter = 1;
 		else
 		{
-			words = words + flag;
-			flag = 0;
+			words += is_delimiter;
+			is_delimiter = 0;
 		}
-		if (!words && flag)
-			return (0);
-		if (!words)
-			return (1);
 	}
+	if (!words && is_delimiter)
+		return (0);
+	if (!words)
+		return (1);
 	return (words);
 }
 
-char	**save_substrings(char **mem, char *str, size_t words, char flag)
+char	**save_words( \
+			char **save_place, char const *str, size_t words, char delimiter)
 {
-	size_t	str_len;
-	size_t	i;
 	size_t	aux_words;
+	size_t	str_len;
+	size_t	count;
 
+	aux_words = 0;
 	str_len = 0;
-	i = 0;
+	count = 0;
 	while (aux_words < words)
 	{
-		if (str[i] == flag || i >= ft_strlen(str))
+		if (str[count] == delimiter || count >= ft_strlen(str))
 		{
 			if (str_len != 0)
-				mem[aux_words++] = ft_substr(str, i - str_len, str_len);
+				save_place[aux_words++] = \
+					ft_substr(str, count - str_len, str_len);
 			str_len = 0;
 		}
 		else
 			str_len++;
-		i++;
+		count++;
 	}
-	return (mem);
+	return (save_place);
 }
 
 char	**ft_split(char const *s, char c)
@@ -67,12 +70,17 @@ char	**ft_split(char const *s, char c)
 
 	if (!s)
 		return (NULL);
-	words = num_substrings(s, c);
-	output = (char **)malloc(sizeof(char *) * (words + 1));
+	words = cnt_words(s, c);
+	output = (char **)malloc((words + 1) * sizeof(char *));
 	if (output)
 	{
-		save_substrings(output, s, words, c);
+		save_words(output, s, words, c);
 		output[words] = NULL;
 	}
 	return (output);
 }
+
+/* Reserva (utilizando malloc(3)) un array de strings
+resultante de separar la string ’s’ en substrings
+utilizando el caracter ’c’ como delimitador. El
+array debe terminar con un puntero NULL */

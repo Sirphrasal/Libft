@@ -1,37 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sfreijo- <sfreijo-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/27 19:40:05 by sfreijo-          #+#    #+#             */
-/*   Updated: 2022/05/27 22:34:08 by sfreijo-         ###   ########.fr       */
+/*   Created: 2022/05/23 19:58:57 by sfreijo-          #+#    #+#             */
+/*   Updated: 2022/05/23 20:13:56 by sfreijo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
 #include "libft.h"
+#include <stdio.h>
 
-char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	size_t		i;
-	size_t		j;
+	int		i;
+	char	*str;
 
 	i = 0;
-	if (needle[i] == '\0')
-		return ((char *)haystack);
-	while (haystack[i])
+	if (s != NULL && f != NULL)
 	{
-		j = 0;
-		while (haystack[i + j] == needle[j] && (i + j) < len)
+		while (s[i])
 		{
-			if (needle[j + 1] == '\0')
-				return ((char *)haystack + i);
-			j++;
+			f(i, &s[i]);
+			i++;
 		}
-		i++;
 	}
-	return (NULL);
 }

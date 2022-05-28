@@ -6,7 +6,7 @@
 /*   By: sfreijo- <sfreijo-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 17:43:31 by sfreijo-          #+#    #+#             */
-/*   Updated: 2022/04/30 19:23:20 by sfreijo-         ###   ########.fr       */
+/*   Updated: 2022/05/27 22:14:24 by sfreijo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*ft_strdup(const char *s1)
 	i = 0;
 	n = ft_strlen(s1) + 1;
 	mem = (char *)malloc(sizeof(char) * n);
-	if (!s1)
+	if (!mem)
 		return (NULL);
 	while (i < n)
 	{

@@ -6,7 +6,7 @@
 /*   By: sfreijo- <sfreijo-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 20:58:13 by sfreijo-          #+#    #+#             */
-/*   Updated: 2022/04/19 21:30:59 by sfreijo-         ###   ########.fr       */
+/*   Updated: 2022/05/27 22:07:51 by sfreijo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 	size_t	i;
 
 	i = 0;
-	if (!dst || !src)
+	if (!dst && !src)
 		return (NULL);
 	while (i < n)
 	{
-		((unsigned char *)dst)[i] = ((unsigned char *)src)[i];
+		((char *)dst)[i] = ((const char *)src)[i];
 		i++;
 	}
 	return (dst);

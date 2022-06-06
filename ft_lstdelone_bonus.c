@@ -1,24 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstlast_bonus.c                                 :+:      :+:    :+:   */
+/*   ft_lstdelone_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sfreijo- <sfreijo-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/28 15:46:27 by sfreijo-          #+#    #+#             */
-/*   Updated: 2022/05/28 19:32:07 by sfreijo-         ###   ########.fr       */
+/*   Created: 2022/05/28 18:37:48 by sfreijo-          #+#    #+#             */
+/*   Updated: 2022/05/28 18:46:07 by sfreijo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstlast(t_list *lst)
+void	ft_lstdelone(t_list *lst, void (*del)(void*))
 {
-	while (lst)
+	if (del && lst)
 	{
-		if (!(lst->next))
-			return (lst);
-		lst = lst->next;
+		(*del)(lst ->content);
+		free(lst);
 	}
-	return (lst);
 }
+
+/* Toma como parámetro un nodo ’lst’ y libera la
+memoria del contenido utilizando la función ’del’
+dada como parámetro, además de liberar el nodo. La
+memoria de ’next’ no debe liberarse. */
